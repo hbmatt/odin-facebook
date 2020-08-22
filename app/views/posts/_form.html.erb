@@ -1,0 +1,4 @@
+<%= form_with model: @post do |f| %>
+  <%= f.text_area :content, placeholder: "What's happening?" %>
+  <%= f.submit "Post" %>
+<% end %>
