@@ -7,11 +7,12 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
 
+  authenticated :user do
+    root to: "posts#index", as: :authenticated_root
+  end
+
   devise_scope :user do
     root to: 'devise/sessions#new', as: :unauthenticated_root
   end
 
-  authenticated :user do
-    root to: 'posts#index'
-  end
 end

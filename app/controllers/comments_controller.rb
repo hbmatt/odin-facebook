@@ -16,10 +16,12 @@ class CommentsController < ApplicationController
 
   def edit
     @comment = Comment.find(params[:id])
+    @post = Post.find(params[:post_id])
   end
 
   def update
     @comment = Comment.find(params[:id])
+    @post = Post.find(params[:post_id])
     
     if @comment.update(comment_params)
       redirect_to post_path(@comment.post)
@@ -41,7 +43,8 @@ class CommentsController < ApplicationController
     end
 
     def authorize
-      unless current_user == @comment.user
+      @comment = Comment.find(params[:id])
+      unless current_user == @comment.author
         redirect_to post_path(@comment.post), alert: 'You cannot do that.'
       end
     end

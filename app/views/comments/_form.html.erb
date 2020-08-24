@@ -1,4 +1,4 @@
-<%= form_with model: @comment do |f| %>
+<%= form_with(model: [@post, @comment], local: true) do |f| %>
   <p>
     <%= f.label :body, "Your Comment" %><BR>
     <%= f.text_area :body %>

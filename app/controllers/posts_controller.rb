@@ -1,10 +1,13 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @posts = Post.all
   end
 
   def show
     @post = Post.find(params[:id])
+    @comment = current_user.comments.build
   end
 
   def new
