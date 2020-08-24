@@ -1,0 +1,9 @@
+<%= form_with model: @comment do |f| %>
+  <p>
+    <%= f.label :body, "Your Comment" %><BR>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit 'Submit' %>
+  </p>
+<% end %>
