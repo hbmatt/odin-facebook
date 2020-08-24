@@ -1,0 +1,17 @@
+<h1>Pending Requests for <%= @user.name %></h1>
+
+<h2>Received Requests</h2>
+<% @received_requests.each do |friendship| %>
+  <p>
+    <%= friendship.user.name %>, <%= friendship.user.username %>, 
+    <%= link_to "Accept Request", user_friendships_path(user_id: current_user.id, friendship: {friend_id: friendship.user}), method: :post, remote: true %>
+  </p>
+<% end %>
+
+<h2>Sent Requests</h2>
+<% @sent_requests.each do |friendship| %>
+  <p>
+    <%= friendship.friend.name %>, <%= friendship.friend.username %>, 
+    <%= link_to "Cancel Request", friendship_path(friendship), method: :delete, local: true, data: {confirm: "Really cancel request?"} %>
+  </p>
+<% end %>

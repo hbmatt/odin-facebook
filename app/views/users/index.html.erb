@@ -1,0 +1,10 @@
+<h1>All Users</h1>
+
+<% @users.each do |user| %>
+  <p>
+    <%= user.name %>, <%= user.username %>
+    <% unless current_user.active_friends.include?(user) || current_user.pending_friends.include?(user) || current_user.received_friends.include?(user) || current_user == user %>
+      <%= link_to "Add Friend", user_friendships_path(user_id: current_user.id, friendship: {friend_id: user}), method: :post, remote: true %>
+    <% end %>
+  </p>
+<% end %>
