@@ -1,0 +1,21 @@
+<article class="media">
+  <figure class="media-left">
+    <p class="image is-128x128">
+      <img src="https://bulma.io/images/placeholders/128x128.png">
+    </p>
+  </figure>
+
+  <div class="media-content">
+    <div class="content">
+      <p><strong>Name:</strong> <%= @user.name %></p>
+      <p><strong>Username:</strong> <%= @user.username %></p>
+      <hr>
+      <p><strong>Posts:</strong></p>
+      <ul>
+        <% @posts.each do |post| %>
+          <li><%= link_to post.content[0,15], post_path(post) %>, <%= distance_of_time_in_words(post.created_at, Time.now) %> ago</li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</article>
