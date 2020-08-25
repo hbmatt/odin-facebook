@@ -3,6 +3,12 @@
 <%= @post.author.name %><BR>
 <%= @post.content %>
 
+<% if @post.likes.where(user: current_user).exists? %>
+  <%= link_to "Unlike", post_like_path(@post), method: :delete, local: true, data: {confirm: "Really unlike?"}  %>
+<% else %>
+  <%= link_to "Like", post_likes_path(@post, like: { user_id: current_user.id }), method: :post, remote: true %>
+<% end %>
+
 <h3>Comments (<%= @post.comments.size %>)</h3>
 <%= render partial: 'posts/comment', collection: @post.comments %>
 
