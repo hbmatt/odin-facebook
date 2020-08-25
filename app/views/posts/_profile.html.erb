@@ -15,7 +15,7 @@
     </div>
     <div class="card-footer">
       <%= link_to "Friends", user_friendships_path(current_user), class: "card-footer-item" %>
-      <%= link_to "All Users", users_path, class: "card-footer-item" %>
+      <%= link_to "Pending", pending_friendships_path(current_user), class: "card-footer-item" %>
       <%= link_to "Edit", edit_user_registration_path, class: "card-footer-item" %>
     </div>
   </div>
