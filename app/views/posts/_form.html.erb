@@ -1,4 +1,12 @@
 <%= form_with model: @post do |f| %>
-  <%= f.text_area :content, placeholder: "What's happening?" %>
-  <%= f.submit "Post" %>
+  <div class="field">
+    <div class="control">
+      <%= f.text_area :content, placeholder: "What's happening?", class: "textarea" %>
+    </div>
+  </div>
+  <div class="field is-grouped is-grouped-right">
+    <div class="control">
+      <%= f.submit "Post", class: "button is-link" %>
+    </div>
+  </div>
 <% end %>

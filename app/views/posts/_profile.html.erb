@@ -1,0 +1,22 @@
+<div class="column is-one-quarter">
+  <div class="card">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-48x48">
+            <img src="https://bulma.io/images/placeholders/96x96.png">
+          </figure>
+        </div>
+        <div class="media-content">
+          <p class="title is-4"><%= current_user.name %></p>
+          <p class="subtitle is-6">@<%= current_user.username %></p>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <%= link_to "Friends", user_friendships_path(current_user), class: "card-footer-item" %>
+      <%= link_to "All Users", users_path, class: "card-footer-item" %>
+      <%= link_to "Edit", edit_user_registration_path, class: "card-footer-item" %>
+    </div>
+  </div>
+</div>

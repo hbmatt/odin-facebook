@@ -1,10 +1,31 @@
-<h1>All Users</h1>
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <h1 class="title">All Users</h2>
 
-<% @users.each do |user| %>
-  <p>
-    <%= user.name %>, <%= user.username %>
-    <% unless current_user.active_friends.include?(user) || current_user.pending_friends.include?(user) || current_user.received_friends.include?(user) || current_user == user %>
-      <%= link_to "Add Friend", user_friendships_path(user_id: current_user.id, friendship: {friend_id: user}), method: :post, remote: true %>
-    <% end %>
-  </p>
-<% end %>
+        <% @users.each do |user| %>
+          <article class="media">
+            <figure class="media-left">
+              <p class="image is-48x48">
+                <img src="https://bulma.io/images/placeholders/96x96.png">
+              </p>
+            </figure>
+
+            <div class="media-content">
+              <div class="content">
+                <strong><%= link_to user.name, user %></strong>, @<%= user.username %>
+              </div>
+            </div>
+
+            <div class="media-right">
+              <% unless current_user.active_friends.include?(user) || current_user.pending_friends.include?(user) || current_user.received_friends.include?(user) || current_user == user %>
+                <%= link_to "Add Friend", user_friendships_path(user_id: current_user.id, friendship: {friend_id: user}), method: :post, remote: true, class: "button is-link" %>
+              <% end %>
+            </div>
+          </article>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

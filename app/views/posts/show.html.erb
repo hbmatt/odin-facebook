@@ -1,16 +1,18 @@
-<h1>View Post #<%= @post.id %></h1>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <%= render 'profile' %>
+      <div class="column is-two-thirds">
+      <div class="box">
+        <h1 class="title">Viewing Post #<%= @post.id %><h1>
+        <%= render 'post' %><BR>
 
-<%= @post.author.name %><BR>
-<%= @post.content %>
+        <h2 class="subtitle">Comments (<%= @post.comments.size %>)</h2>
+        <%= render partial: 'posts/comment', collection: @post.comments %>
 
-<% if @post.likes.where(user: current_user).exists? %>
-  <%= link_to "Unlike", post_like_path(@post), method: :delete, local: true, data: {confirm: "Really unlike?"}  %>
-<% else %>
-  <%= link_to "Like", post_likes_path(@post, like: { user_id: current_user.id }), method: :post, remote: true %>
-<% end %>
-
-<h3>Comments (<%= @post.comments.size %>)</h3>
-<%= render partial: 'posts/comment', collection: @post.comments %>
-
-<h4>Post a Comment</h4>
-<%= render partial: 'comments/form' %>
+        <%= render partial: 'comments/form' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

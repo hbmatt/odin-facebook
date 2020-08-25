@@ -1,5 +1,31 @@
-<h1><%= @user.name %>'s Friends</h1>
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <h1 class="title"><%= @user.name %>'s Friends</h1>
 
-<% @friends.each do |friend| %>
-  <p><%= friend.name %>, <%= friend.username %></p>
-<% end %>
+        <% @friends.each do |friend| %>
+          <article class="media">
+            <figure class="media-left">
+              <p class="image is-48x48">
+                <img src="https://bulma.io/images/placeholders/96x96.png">
+              </p>
+            </figure>
+
+            <div class="media-content">
+              <div class="content">
+                <strong><%= link_to friend.name, friend %></strong>, @<%= friend.username %>
+              </div>
+            </div>
+
+            <div class="media-right">
+              <% unless current_user.active_friends.include?(friend) || current_user.pending_friends.include?(friend) || current_user.received_friends.include?(friend) || current_user == friend %>
+                <%= link_to "Add Friend", user_friendships_path(user_id: current_user.id, friendship: {friend_id: friend}), method: :post, remote: true, class: "button is-link" %>
+              <% end %>
+            </div>
+          </article>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

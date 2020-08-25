@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_comment, only: [:edit, :update, :destroy]
   before_action :authorize, only: [:edit, :update, :destroy]
 
   def create
@@ -15,12 +16,10 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find(params[:id])
     @post = Post.find(params[:post_id])
   end
 
   def update
-    @comment = Comment.find(params[:id])
     @post = Post.find(params[:post_id])
     
     if @comment.update(comment_params)
@@ -31,7 +30,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
     @post = @comment.post
     @comment.destroy
 
@@ -39,12 +37,15 @@ class CommentsController < ApplicationController
   end
 
   private
+    def set_comment
+      @comment = Comment.find(params[:id])
+    end
+
     def comment_params
       params.require(:comment).permit(:body)
     end
 
     def authorize
-      @comment = Comment.find(params[:id])
       unless current_user == @comment.author
         redirect_to post_path(@comment.post), alert: 'You cannot do that.'
       end

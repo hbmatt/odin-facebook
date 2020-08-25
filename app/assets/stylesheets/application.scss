@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bulma";
+
+// round images
+.image {
+  border-radius: 50%;
+  img {
+    border-radius: 50%;
+  }
+}
+
+.notification:not(:last-child) {
+  margin-bottom: 0;
+}
+
+.is-size-7 {
+  font-size: 0.875rem!important
+}

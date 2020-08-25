@@ -1,9 +1,22 @@
-<%= form_with(model: [@post, @comment], local: true) do |f| %>
-  <p>
-    <%= f.label :body, "Your Comment" %><BR>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit 'Submit' %>
-  </p>
-<% end %>
+<article class="media">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <img src="https://bulma.io/images/placeholders/128x128.png">
+    </p>
+  </figure>
+
+  <div class="media-content">
+    <%= form_with(model: [@post, @comment], local: true) do |f| %>
+      <div class="field">
+        <div class="control">
+          <%= f.text_area :body, placeholder: "Add a comment...", class: "textarea" %>
+        </div>
+      </div>
+      <div class="field is-grouped is-grouped-right">
+        <div class="control">
+          <%= f.submit "Post", class: "button is-link" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</article>
