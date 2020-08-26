@@ -11,7 +11,7 @@
 
   <div class="media-content">
     <div class="content">
-      <p class="title is-4"><%= @post.author.name %></p>
+      <p class="title is-4"><%= link_to @post.author.name, user_path(@post.author) %></p>
       <p class="subtitle is-6"><%= distance_of_time_in_words(@post.created_at, Time.now) %> ago</p>
       <hr>
       <p><%= @post.content %></p>

@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="media-right">
-                  <%= link_to "Accept Request", user_friendships_path(user_id: current_user.id, friendship: {friend_id: friendship.user}), method: :post, remote: true, class: "button is-link" %>
+                  <%= link_to "Accept Request", accept_friendship_path(user_id: current_user.id, friendship: {friend_id: friendship.user}), method: :post, remote: true, class: "button is-link" %>
                 </div>
               </article>
             <% end %>

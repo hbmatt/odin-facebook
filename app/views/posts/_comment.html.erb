@@ -11,7 +11,7 @@
 
   <div class="media-content">
     <div class="content">
-      <strong><%= comment.author.name %></strong><BR>
+      <strong><%= link_to comment.author.name, user_path(comment.author) %></strong><BR>
       <p>Posted <%= distance_of_time_in_words(comment.created_at, Time.now) %> ago</p>
       <p><%= comment.body %></p>
     </div>

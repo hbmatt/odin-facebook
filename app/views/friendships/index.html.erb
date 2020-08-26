@@ -5,7 +5,7 @@
 
       <div class="column is-two-thirds">
         <div class="box">
-          <h1 class="title"><%= @user.name %>'s Friends</h1>
+          <h1 class="title"><%= link_to @user.name, user_path(@user) %>'s Friends</h1>
 
           <% @friends.each do |friend| %>
             <article class="media">

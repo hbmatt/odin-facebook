@@ -29,7 +29,7 @@
 
         <div class="media-content">
           <div class="content">
-            <strong><%= post.author.name %></strong><BR>
+            <strong><%= link_to post.author.name, user_path(post.author) %></strong><BR>
             <p><%= post.content %></p>
           </div>
 

@@ -13,6 +13,7 @@
     <div class="content">
       <p><strong>Name:</strong> <%= @user.name %></p>
       <p><strong>Username:</strong> <%= @user.username %></p>
+      <p><%= link_to "#{@user.name}'s Friends", user_friendships_path(@user) %></p>
       <hr>
       <p><strong>Posts:</strong></p>
       <ul>
