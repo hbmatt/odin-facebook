@@ -6,9 +6,10 @@ class LikesController < ApplicationController
 
   def create
     if already_liked?
-      
+      flash[:alert] = "You've already liked this!"
     else  
       @post.likes.create(like_params)
+      flash[:notice] = "Post liked."
     end
 
     redirect_to post_path(@post)
@@ -16,9 +17,10 @@ class LikesController < ApplicationController
 
   def destroy
     if !already_liked?
-      
+      flash[:alert] = "You haven't liked this!"
     else  
       @like.destroy
+      flash[:notice] = "Post unliked."
     end
     
     redirect_to post_path(@post)
@@ -30,7 +32,7 @@ class LikesController < ApplicationController
     end
 
     def set_like
-      @like = @post.likes.where(user: current_user)
+      @like = Like.find(params[:id])
     end
 
     def like_params

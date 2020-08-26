@@ -8,10 +8,10 @@ class CommentsController < ApplicationController
     @comment.post_id = params[:post_id]
 
     if @comment.save
-      redirect_to post_path(@comment.post)
+      redirect_to post_path(@comment.post), notice: 'Comment successfully created.'
     else
       @post = @comment.post
-      render 'post/show'
+      render 'post/show', alert: 'Please check your errors.'
     end
   end
 
@@ -23,9 +23,9 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     
     if @comment.update(comment_params)
-      redirect_to post_path(@comment.post)
+      redirect_to post_path(@comment.post), notice: 'Comment successfully updated.'
     else
-      render :edit
+      render :edit, alert: 'Please check your errors.'
     end
   end
 
@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
     @post = @comment.post
     @comment.destroy
 
-    redirect_to post_path(@post)
+    redirect_to post_path(@post), notice: 'Comment successfully deleted.'
   end
 
   private

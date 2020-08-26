@@ -21,9 +21,9 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.friendships.build(friendship_params)
 
     if @friendship.save
-      redirect_to users_path
+      redirect_to pending_friendships_path(current_user), notice: 'Friend request sent.'
     else
-      redirect_to users_path
+      redirect_back(fallback_location: users_path, alert: 'Friend request could not be sent.')
     end
   end
 
@@ -31,7 +31,7 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.friendships.build(friendship_params)
 
     @friendship.save
-    redirect_to user_friendships_path(current_user)
+    redirect_to user_friendships_path(current_user), notice: 'Friend request accepted.'
   end
 
   def destroy
@@ -43,8 +43,10 @@ class FriendshipsController < ApplicationController
 
       @friendship.destroy
       @mutual_friendship.destroy
+      flash[:alert] = "Friend deleted."
     else
       @friendship.destroy
+      flash[:alert] = "Friend request deleted."
     end
 
     redirect_to user_friendships_path(current_user)
