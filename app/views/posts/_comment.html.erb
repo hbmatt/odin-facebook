@@ -2,7 +2,7 @@
   <figure class="media-left">
     <p class="image is-64x64">
       <% if comment.author.avatar.attached? %>
-        <img src="<%= (url_for(comment.author.avatar)) %>">
+        <%= image_tag comment.author.avatar.variant(resize_to_fill: [128, 128, { gravity: 'Center' }]) %>
       <% else %>
         <img src="https://bulma.io/images/placeholders/128x128.png">
       <% end %>

@@ -15,7 +15,7 @@
                 <figure class="media-left">
                   <p class="image is-48x48">
                     <% if friendship.user.avatar.attached? %>
-                      <img src="<%= (url_for(friendship.user.avatar)) %>">
+                      <%= image_tag friendship.user.avatar.variant(resize_to_fill: [128, 128, { gravity: 'Center' }]) %>
                     <% else %>
                       <img src="https://bulma.io/images/placeholders/128x128.png">
                     <% end %>
@@ -46,7 +46,7 @@
                 <figure class="media-left">
                   <p class="image is-48x48">
                     <% if friendship.friend.avatar.attached? %>
-                      <img src="<%= (url_for(friendship.friend.avatar)) %>">
+                      <%= image_tag friendship.friend.avatar.variant(resize_to_fill: [128, 128, { gravity: 'Center' }]) %>
                     <% else %>
                       <img src="https://bulma.io/images/placeholders/128x128.png">
                     <% end %>
