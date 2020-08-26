@@ -58,6 +58,22 @@
             </div>
 
             <div class="field">
+              <div class="file">
+                <%= f.label :avatar, class: "file-label" do %>
+                  <%= f.file_field :avatar, class: "file-input" %>
+                  <span class="file-cta">
+                    <span class="file-icon">
+                      <i class="fa fa-upload"></i>
+                    </span>
+                    <span class="file-label">
+                      Upload Profile Photo
+                    </span>
+                  </span>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="field">
               <div class="control">
                 <%= f.submit "Sign up", class: "button is-link" %>
               </div>

@@ -11,7 +11,11 @@
             <article class="media">
               <figure class="media-left">
                 <p class="image is-48x48">
-                  <img src="https://bulma.io/images/placeholders/96x96.png">
+                  <% if friend.avatar.attached? %>
+                    <img src="<%= (url_for(friend.avatar)) %>">
+                  <% else %>
+                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                  <% end %>
                 </p>
               </figure>
 

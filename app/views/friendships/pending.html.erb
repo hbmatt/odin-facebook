@@ -14,7 +14,11 @@
               <article class="media">
                 <figure class="media-left">
                   <p class="image is-48x48">
-                    <img src="https://bulma.io/images/placeholders/96x96.png">
+                    <% if friendship.user.avatar.attached? %>
+                      <img src="<%= (url_for(friendship.user.avatar)) %>">
+                    <% else %>
+                      <img src="https://bulma.io/images/placeholders/128x128.png">
+                    <% end %>
                   </p>
                 </figure>
 
@@ -29,6 +33,7 @@
                 </div>
               </article>
             <% end %>
+            <BR>
           <% else %>
             <div class="content"><blockquote>None.</blockquote></div>
           <% end %>
@@ -40,7 +45,11 @@
               <article class="media">
                 <figure class="media-left">
                   <p class="image is-48x48">
-                    <img src="https://bulma.io/images/placeholders/96x96.png">
+                    <% if friendship.friend.avatar.attached? %>
+                      <img src="<%= (url_for(friendship.friend.avatar)) %>">
+                    <% else %>
+                      <img src="https://bulma.io/images/placeholders/128x128.png">
+                    <% end %>
                   </p>
                 </figure>
 
